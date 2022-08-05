@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="wrapper">
+        <input id='name' type="text" placeholder="Enter text">
+        <input id='number' type="text" placeholder="Enter text">
+        <input id='email' type="text" placeholder="Enter text">
+        <button onclick="getVal()">checkValid</button>   
+        <div class="wrapperPaint">
+            <p>Это успокоительная доска. Тут можно рисовать линии и медитировать если горит проект</p>
+            <canvas height="320" width="480" id="canvas">Browser not support canvas</canvas>   
+        <div class="chooseColor">
+            <div class="red" onclick=hello()></div>
+            <div class="green" onclick="changeColorGreen()"></div>
+            <div class="blue" onclick="changeColorBlue()"></div>
+            <p>Выбор цвета</p>
+        </div>
+
+        <input id='url' type="text" placeholder="Enter text">
+        <button onclick="getUrl()">checkValid</button>  
+    </div>
+   
+    <script>
+      
+        function getVal() {
+            const val1 = document.querySelector('#name').value;
+            const val2 = document.querySelector('#number').value;
+            const val3 = document.querySelector('#email').value;
+            let nameValidator=/^[a-zA-Z ]{2,30}$/;
+            let phoneValidator=/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+            let emailValidator=/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+            let nameResult=nameValidator.test(val1);
+            let phoneResult=phoneValidator.test(val2);
+            let emailResult=emailValidator.test(val3);
+            console.log(`name is ${nameResult}, phone is ${phoneResult}, email is ${emailResult}`);
+        }
+
+        function getUrl(){
+            const val=document.querySelector('#url').value;
+            let urlValidator=/(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/gi;
+            let urlResult=urlValidator.test(val);
+            console.log(`url is ${urlResult}`);
+        }
+        let x, y, even = 0;
+        window.addEventListener('click', (event) => {
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext('2d');
+        console.log(color);
+        ctx.strokeStyle = 'black';
+            if (even) {
+                ctx.beginPath();       // Начинает новый путь
+                ctx.moveTo(x, y);    // Передвигает перо в точку (30, 50)
+                ctx.lineTo(event.offsetX, event.offsetY);
+                ctx.stroke(); 
+
+                x = event.offsetX;
+                y = event.offsetY;
+
+                // even = 0;  
+            } else {
+                x = event.offsetX;
+                y = event.offsetY;
+                even = 1;
+            }  
+        });
+
+    </script>
+</body>
+</html>

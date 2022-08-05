@@ -1,0 +1,85 @@
+.wrapper{
+    border: 1px solid black;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 10px 10px;
+    gap:10px;
+
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    gap:5px;
+    margin: 10px 0 0 10px;
+
+}
+
+#input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input{
+    max-width: 200px;
+}
+
+button{
+    max-width: 100px;
+}
+
+#paintWindow{
+    width: 500px;
+    height: 500px;
+    background-color: antiquewhite;
+}
+
+table, th, td {
+    border:1px solid black;
+    padding: 5px;
+  }
+
+  .dialog-window {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 30px;
+    left: 30px;
+    border: 1px lightgray solid;
+    border-radius: 4px;
+    background-color: cornflowerblue;
+  }
+
+.second {
+    width: 10px;
+    height: 10px;
+    background-color: blue;
+}
+
+
+.chooseColor{
+    display: flex;
+    flex-direction: row;
+}
+.red
+{
+    background-color: red;
+    width: 50px;
+    height: 50px;
+}
+.green{
+    background-color: green;
+    width: 50px;
+    height: 50px;
+}
+.blue{
+    background-color: blue;
+    width: 50px;
+    height: 50px;
+}
+
+canvas{
+    border: 1px solid black;
+}
