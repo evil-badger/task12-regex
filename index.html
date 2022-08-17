@@ -17,18 +17,22 @@
             <p>Это успокоительная доска. Тут можно рисовать линии и медитировать если горит проект</p>
             <canvas height="320" width="480" id="canvas">Browser not support canvas</canvas>   
         <div class="chooseColor">
-            <div class="red" onclick=hello()></div>
+       
+            <div class="red" onclick=changeColorRed()></div>
             <div class="green" onclick="changeColorGreen()"></div>
             <div class="blue" onclick="changeColorBlue()"></div>
+
             <p>Выбор цвета</p>
         </div>
 
         <input id='url' type="text" placeholder="Enter text">
         <button onclick="getUrl()">checkValid</button>  
+        
     </div>
    
     <script>
-      
+  
+        
         function getVal() {
             const val1 = document.querySelector('#name').value;
             const val2 = document.querySelector('#number').value;
@@ -48,27 +52,53 @@
             let urlResult=urlValidator.test(val);
             console.log(`url is ${urlResult}`);
         }
+
+      
+        var color='black';
+
+        function changeColorGreen(){
+            color='green';
+            console.log(color);
+        }
+
+        function changeColorBlue(){
+            color='blue';
+
+        }
+
+        function changeColorRed(){
+            color='red';
+        }
+        
+
+
+       
+        
         let x, y, even = 0;
+
         window.addEventListener('click', (event) => {
+        console.log('Gloabal window event ====> ', event);
         const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext('2d');
-        console.log(color);
-        ctx.strokeStyle = 'black';
-            if (even) {
-                ctx.beginPath();       // Начинает новый путь
-                ctx.moveTo(x, y);    // Передвигает перо в точку (30, 50)
-                ctx.lineTo(event.offsetX, event.offsetY);
-                ctx.stroke(); 
+        ctx.strokeStyle = color;
+     
+      
 
-                x = event.offsetX;
-                y = event.offsetY;
+        if (even) {
+            ctx.beginPath();       // Начинает новый путь
+            ctx.moveTo(x, y);    // Передвигает перо в точку (30, 50)
+            ctx.lineTo(event.offsetX, event.offsetY);
+            ctx.stroke(); 
 
-                // even = 0;  
-            } else {
-                x = event.offsetX;
-                y = event.offsetY;
-                even = 1;
-            }  
+            x = event.offsetX;
+            y = event.offsetY;
+
+            // even = 0;  
+        } else {
+            x = event.offsetX;
+            y = event.offsetY;
+            even = 1;
+        }  
         });
 
     </script>
